@@ -32,6 +32,8 @@
 		<org.jakarta.validation-api.version>3.1.1</org.jakarta.validation-api.version>
 		<org.minio.version>8.5.7</org.minio.version>
 		<org.springdoc-openapi-starter-webmvc-ui.version>2.5.0</org.springdoc-openapi-starter-webmvc-ui.version>
+		<org.springdoc.version>2.5.0</org.springdoc.version>
+		<me.paulschwarz.version>4.0.0</me.paulschwarz.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -50,7 +52,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-webmvc</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -113,7 +114,17 @@
 		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-			<version>2.5.0</version>
+			<version>${org.springdoc.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>me.paulschwarz</groupId>
+			<artifactId>spring-dotenv</artifactId>
+			<version>${me.paulschwarz.version}</version>
 		</dependency>
 	</dependencies>
 
