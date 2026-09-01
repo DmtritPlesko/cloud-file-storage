@@ -11,14 +11,13 @@ import java.util.UUID;
 
 @Slf4j
 @RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PROTECTED, makeFinal = true)
+@FieldDefaults(level = AccessLevel.PROTECTED)
 public abstract class BaseUseCase {
 
     final static String USER_FOLDER_PREFIX = "user-";
     final static String USER_FOLDER_SUFFIX = "-files";
     final MinioClient minioClient;
-    @Value("${minio.bucket}")
-    String bucketName;
+    final String bucketName;
 
     protected String userFolder(UUID uuid) {
 

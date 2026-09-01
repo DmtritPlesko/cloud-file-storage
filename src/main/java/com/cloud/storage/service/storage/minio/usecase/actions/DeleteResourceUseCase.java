@@ -7,6 +7,7 @@ import io.minio.RemoveObjectArgs;
 import io.minio.Result;
 import io.minio.messages.Item;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -17,7 +18,8 @@ import java.util.UUID;
 @Component
 public class DeleteResourceUseCase extends BaseUseCase {
 
-    public DeleteResourceUseCase(MinioClient minioClient, String bucketName) {
+    public DeleteResourceUseCase(MinioClient minioClient,
+                                 @Value("${minio.bucket}") String bucketName) {
         super(minioClient, bucketName);
     }
 

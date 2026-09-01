@@ -8,6 +8,7 @@ import com.cloud.storage.service.storage.minio.usecase.BaseUseCase;
 import io.minio.*;
 import io.minio.errors.ErrorResponseException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayInputStream;
@@ -18,7 +19,8 @@ import java.util.UUID;
 @Component
 public class MoveResourceUseCase extends BaseUseCase {
 
-    public MoveResourceUseCase(MinioClient minioClient, String bucketName) {
+    public MoveResourceUseCase(MinioClient minioClient,
+                               @Value("${minio.bucket}") String bucketName) {
         super(minioClient, bucketName);
     }
 

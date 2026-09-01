@@ -30,7 +30,7 @@ public class ResourceControllerImpl implements ResourceControllerApi {
 
     @Override
     @GetMapping(path = "/resource")
-    public ResponseEntity<?> getResource(@RequestParam String path,
+    public ResponseEntity<ResourceResponse> getResource(@RequestParam String path,
                                          @CurrentUser UUID userId) {
 
         return ResponseEntity

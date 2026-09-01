@@ -1,6 +1,7 @@
 package com.cloud.storage.controller.imp;
 
 import com.cloud.storage.annotation.CurrentUser;
+import com.cloud.storage.dto.response.AuthResponse;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
@@ -22,7 +23,7 @@ import java.util.Map;
 public class UserControllerImpl {
 
     @GetMapping(path = "/me")
-    public ResponseEntity<?> me(@AuthenticationPrincipal
+    public ResponseEntity<AuthResponse> me(@AuthenticationPrincipal
                                 @CurrentUser String username) {
 
         if (username == null) {
@@ -33,7 +34,7 @@ public class UserControllerImpl {
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(Map.of("username", username));
+                .body(new AuthResponse(username));
     }
 }
 

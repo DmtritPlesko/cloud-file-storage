@@ -32,7 +32,7 @@
 		<org.jakarta.validation-api.version>3.1.1</org.jakarta.validation-api.version>
 		<org.minio.version>8.5.7</org.minio.version>
 		<org.springdoc-openapi-starter-webmvc-ui.version>2.5.0</org.springdoc-openapi-starter-webmvc-ui.version>
-		<org.springdoc.version>2.5.0</org.springdoc.version>
+		<org.springdoc.version>2.7.0</org.springdoc.version>
 		<me.paulschwarz.version>4.0.0</me.paulschwarz.version>
 	</properties>
 	<dependencies>

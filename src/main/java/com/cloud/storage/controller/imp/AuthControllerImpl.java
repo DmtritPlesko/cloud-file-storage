@@ -2,6 +2,7 @@ package com.cloud.storage.controller.imp;
 
 import com.cloud.storage.controller.AuthControllerApi;
 import com.cloud.storage.dto.request.AuthRequest;
+import com.cloud.storage.dto.response.AuthResponse;
 import com.cloud.storage.service.auth.AuthService;
 import jakarta.validation.Valid;
 import lombok.AccessLevel;
@@ -28,34 +29,32 @@ public class AuthControllerImpl implements AuthControllerApi {
 
     @PostMapping("/sign-in")
     @Override
-    public ResponseEntity<?> login(@RequestBody
+    public ResponseEntity<AuthResponse> login(@RequestBody
                                    @Valid AuthRequest request) {
 
         log.info("Вход под пользователем: {}", request.getUsername());
-        authService.authenticate(request);
+
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(Map.of("username", request.getUsername()));
+                .body(authService.authenticate(request));
     }
 
     @PostMapping("/sign-up")
     @Override
-    public ResponseEntity<?> register(@RequestBody
+    public ResponseEntity<AuthResponse> register(@RequestBody
                                       @Valid AuthRequest request) {
 
         log.info("Регистрация: {} пользователя", request.getUsername());
-        authService.register(request);
-
 
         return ResponseEntity
                 .status(HttpStatus.CREATED)
-                .body(Map.of("username", request.getUsername()));
+                .body(authService.register(request));
     }
 
     @PostMapping("/sign-out")
     @Override
-    public ResponseEntity<?> logout() {
+    public ResponseEntity<Void> logout() {
 
         log.info("Выполняю выход");
         authService.logOut();

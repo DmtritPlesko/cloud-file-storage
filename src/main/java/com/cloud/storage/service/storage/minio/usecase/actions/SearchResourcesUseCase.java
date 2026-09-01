@@ -9,6 +9,7 @@ import io.minio.MinioClient;
 import io.minio.Result;
 import io.minio.messages.Item;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
@@ -19,7 +20,8 @@ import java.util.UUID;
 @Component
 public class SearchResourcesUseCase extends BaseUseCase {
 
-    public SearchResourcesUseCase(MinioClient minioClient, String bucketName) {
+    public SearchResourcesUseCase(MinioClient minioClient,
+                                  @Value("${minio.bucket}") String bucketName) {
         super(minioClient, bucketName);
     }
 

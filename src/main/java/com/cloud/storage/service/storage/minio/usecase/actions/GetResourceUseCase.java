@@ -10,6 +10,7 @@ import io.minio.StatObjectArgs;
 import io.minio.StatObjectResponse;
 import io.minio.errors.ErrorResponseException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.util.UUID;
@@ -18,7 +19,8 @@ import java.util.UUID;
 @Component
 public class GetResourceUseCase extends BaseUseCase {
 
-    public GetResourceUseCase(MinioClient minioClient, String bucketName) {
+    public GetResourceUseCase(MinioClient minioClient,
+                              @Value("${minio.bucket}") String bucketName) {
         super(minioClient, bucketName);
     }
 

@@ -43,7 +43,7 @@ public interface ResourceControllerApi {
                     content = @Content(mediaType = MediaType.APPLICATION_JSON_VALUE)
             )
     })
-    ResponseEntity<?> getResource(
+    ResponseEntity<ResourceResponse> getResource(
             @Parameter(description = "Path to resource", required = true)
             @RequestParam String path,
             @Parameter(hidden = true) UUID userId

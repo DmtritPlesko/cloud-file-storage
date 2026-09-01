@@ -69,7 +69,6 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(PUBLIC_URLS).permitAll()
                         .requestMatchers("/api/auth/sign-up", "/api/auth/sign-in").permitAll()
-                        .requestMatchers("/api/auth/session-expired").permitAll()
                         .anyRequest().authenticated()
                 )
 
@@ -121,14 +120,14 @@ public class SecurityConfig {
                                     authentication != null ? authentication.getName() : "unknown");
                         })
                         .permitAll()
-                )
-
-                .sessionManagement(session -> session
-                        .maximumSessions(1)
-                        .maxSessionsPreventsLogin(false)
-                        .expiredUrl("/api/auth/session-expired")
-                        .sessionRegistry(sessionRegistry())
                 );
+
+//                .sessionManagement(session -> session
+//                        .maximumSessions(1)
+//                        .maxSessionsPreventsLogin(false)
+//                        .expiredUrl("/api/auth/session-expired")
+//                        .sessionRegistry(sessionRegistry())
+//                );
 
         return http.build();
     }

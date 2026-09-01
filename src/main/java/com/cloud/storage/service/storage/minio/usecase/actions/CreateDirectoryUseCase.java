@@ -9,6 +9,7 @@ import io.minio.PutObjectArgs;
 import io.minio.StatObjectArgs;
 import io.minio.errors.ErrorResponseException;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.ByteArrayInputStream;
@@ -18,8 +19,8 @@ import java.util.UUID;
 @Component
 public class CreateDirectoryUseCase extends BaseUseCase {
 
-
-    public CreateDirectoryUseCase(MinioClient minioClient, String bucketName) {
+    public CreateDirectoryUseCase(MinioClient minioClient,
+                                  @Value("${minio.bucket}") String bucketName) {
         super(minioClient, bucketName);
     }
 

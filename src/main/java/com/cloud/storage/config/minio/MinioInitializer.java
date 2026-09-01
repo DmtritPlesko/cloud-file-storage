@@ -14,10 +14,11 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Component
 @RequiredArgsConstructor
-@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class MinioInitializer {
 
-    MinioClient minioClient;
+    final MinioClient minioClient;
+
     @Value("${minio.bucket}")
     String bucketName;
 

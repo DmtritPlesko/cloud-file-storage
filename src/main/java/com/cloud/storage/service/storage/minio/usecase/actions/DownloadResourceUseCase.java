@@ -6,6 +6,7 @@ import io.minio.*;
 import io.minio.errors.ErrorResponseException;
 import io.minio.messages.Item;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.mvc.method.annotation.StreamingResponseBody;
 
@@ -18,7 +19,8 @@ import java.util.zip.ZipOutputStream;
 @Component
 public class DownloadResourceUseCase extends BaseUseCase {
 
-    public DownloadResourceUseCase(MinioClient minioClient, String bucketName) {
+    public DownloadResourceUseCase(MinioClient minioClient,
+                                   @Value("${minio.bucket}") String bucketName) {
         super(minioClient, bucketName);
     }
 
